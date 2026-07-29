@@ -13,10 +13,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
-        context.go('/login'); // Ganti sesuai route Anda
-      }
+    Future.delayed(const Duration(seconds: 2), () {
+      // ignore: use_build_context_synchronously
+      context.go('/login');
     });
   }
 
@@ -27,95 +26,51 @@ class _SplashScreenState extends State<SplashScreen> {
         width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color(0xFF1565C0),
-              Color(0xFF42A5F5),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            colors: [Color(0xFF1565C0), Color(0xFF42A5F5)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
-        child: SafeArea(
-          child: Column(
-            children: [
-              const Spacer(),
-
-              // Logo
-              Container(
-                padding: const EdgeInsets.all(24),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black26,
-                      blurRadius: 20,
-                      offset: Offset(0, 10),
-                    ),
-                  ],
-                ),
-                child: const Icon(
-                  Icons.assignment_outlined,
-                  size: 80,
-                  color: Color(0xFF1565C0),
-                ),
-              ),
-
-              const SizedBox(height: 30),
-
-              const Text(
-                "Field Survey",
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  letterSpacing: 1,
-                ),
-              ),
-
-              const SizedBox(height: 10),
-
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
-                child: Text(
-                  "Aplikasi Mobile untuk Survey Lapangan yang cepat, mudah, dan efisien.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white70,
-                    fontSize: 16,
-                    height: 1.5,
+        child: const SafeArea(
+          child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                CircleAvatar(
+                  radius: 45,
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    Icons.assignment_outlined,
+                    size: 50,
+                    color: Color(0xFF1565C0),
                   ),
                 ),
-              ),
 
-              const Spacer(),
+                SizedBox(height: 20),
 
-              const CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-              ),
-
-              const SizedBox(height: 20),
-
-              const Text(
-                "Memuat aplikasi...",
-                style: TextStyle(
-                  color: Colors.white70,
-                  fontSize: 14,
+                Text(
+                  "Field Survey",
+                  style: TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
 
-              const SizedBox(height: 40),
+                SizedBox(height: 8),
 
-              const Text(
-                "Version 1.0.0",
-                style: TextStyle(
-                  color: Colors.white54,
-                  fontSize: 12,
+                Text(
+                  "Survey menjadi lebih mudah",
+                  style: TextStyle(fontSize: 15, color: Colors.white70),
                 ),
-              ),
 
-              const SizedBox(height: 20),
-            ],
+                SizedBox(height: 30),
+
+                CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                ),
+              ],
+            ),
           ),
         ),
       ),

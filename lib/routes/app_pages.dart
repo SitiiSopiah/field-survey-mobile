@@ -1,4 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:field_survey/screens/auth/login.dart';
+import 'package:field_survey/screens/auth/register.dart';
+import 'package:field_survey/screens/dashboard/dashboard.dart';
 import 'package:go_router/go_router.dart';
 import '../screens/splash/splash_screen.dart';
 import 'app_routes.dart';
@@ -9,8 +11,20 @@ class AppPages {
     routes: [
       GoRoute(
         path: AppRoutes.splash,
-        builder: (context, state) => const SplashScreen(),
+        builder: (context, state) => SplashScreen(),
       ),
+      GoRoute(
+        path: AppRoutes.login,
+        builder:(context, state) => LoginPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.register,
+        builder: (context, state) => RegisterPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.dashboard,
+        builder: (context, state) => DashboardPage(),
+      )
     ],
   );
 }
