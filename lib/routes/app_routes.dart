@@ -3,4 +3,6 @@ class AppRoutes {
   static String login = "/login";
   static String register = "/register";
   static String dashboard = "/dashboard";
+  static String profile = '/profile';
+  static String survey = '/survey';
 }

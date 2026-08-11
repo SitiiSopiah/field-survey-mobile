@@ -1,6 +1,8 @@
 import 'package:field_survey/screens/auth/login.dart';
 import 'package:field_survey/screens/auth/register.dart';
 import 'package:field_survey/screens/dashboard/dashboard.dart';
+import 'package:field_survey/screens/profile/profile.dart';
+import 'package:field_survey/screens/survey/survey.dart';
 import 'package:go_router/go_router.dart';
 import '../screens/splash/splash_screen.dart';
 import 'app_routes.dart';
@@ -13,10 +15,7 @@ class AppPages {
         path: AppRoutes.splash,
         builder: (context, state) => SplashScreen(),
       ),
-      GoRoute(
-        path: AppRoutes.login,
-        builder:(context, state) => LoginPage(),
-      ),
+      GoRoute(path: AppRoutes.login, builder: (context, state) => LoginPage()),
       GoRoute(
         path: AppRoutes.register,
         builder: (context, state) => RegisterPage(),
@@ -24,7 +23,15 @@ class AppPages {
       GoRoute(
         path: AppRoutes.dashboard,
         builder: (context, state) => DashboardPage(),
-      )
+      ),
+      GoRoute(
+        path: AppRoutes.profile,
+        builder: (context, state) => ProfilePage(),
+      ),
+      GoRoute(
+        path: AppRoutes.survey,
+        builder: (context, state) => SurveyPage(),
+      ),
     ],
   );
 }

@@ -9,6 +9,7 @@ class DashboardPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xffF5F7FA),
 
+      // ================= APP BAR =================
       appBar: AppBar(
         backgroundColor: const Color(0xFF1565C0),
         foregroundColor: Colors.white,
@@ -21,7 +22,6 @@ class DashboardPage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              // logout
               context.go('/login');
             },
             icon: const Icon(Icons.logout),
@@ -29,12 +29,12 @@ class DashboardPage extends StatelessWidget {
         ],
       ),
 
+      // ================= BODY =================
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
             // Profile Card
             Container(
               width: double.infinity,
@@ -54,12 +54,10 @@ class DashboardPage extends StatelessWidget {
                       color: Color(0xFF1565C0),
                     ),
                   ),
-
                   const SizedBox(width: 16),
-
-                  Column(
+                  const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         "Halo, Surveyor!",
                         style: TextStyle(
@@ -67,9 +65,7 @@ class DashboardPage extends StatelessWidget {
                           fontSize: 14,
                         ),
                       ),
-
                       SizedBox(height: 5),
-
                       Text(
                         "Selamat Datang",
                         style: TextStyle(
@@ -84,9 +80,7 @@ class DashboardPage extends StatelessWidget {
               ),
             ),
 
-
             const SizedBox(height: 25),
-
 
             const Text(
               "Ringkasan Survey",
@@ -98,7 +92,7 @@ class DashboardPage extends StatelessWidget {
 
             const SizedBox(height: 15),
 
-
+           
             Row(
               children: [
                 Expanded(
@@ -108,9 +102,7 @@ class DashboardPage extends StatelessWidget {
                     value: "25",
                   ),
                 ),
-
                 const SizedBox(width: 15),
-
                 Expanded(
                   child: _buildStatisticCard(
                     icon: Icons.check_circle,
@@ -121,9 +113,7 @@ class DashboardPage extends StatelessWidget {
               ],
             ),
 
-
             const SizedBox(height: 15),
-
 
             Row(
               children: [
@@ -134,9 +124,7 @@ class DashboardPage extends StatelessWidget {
                     value: "7",
                   ),
                 ),
-
                 const SizedBox(width: 15),
-
                 Expanded(
                   child: _buildStatisticCard(
                     icon: Icons.location_on,
@@ -147,9 +135,7 @@ class DashboardPage extends StatelessWidget {
               ],
             ),
 
-
             const SizedBox(height: 30),
-
 
             const Text(
               "Menu Utama",
@@ -161,7 +147,7 @@ class DashboardPage extends StatelessWidget {
 
             const SizedBox(height: 15),
 
-
+          
             GridView.count(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -169,17 +155,20 @@ class DashboardPage extends StatelessWidget {
               crossAxisSpacing: 15,
               mainAxisSpacing: 15,
               children: [
-
                 _buildMenuCard(
                   icon: Icons.add_circle_outline,
                   title: "Buat Survey",
-                  onTap: () {},
+                  onTap: () {
+                    context.go('/survey');
+                  },
                 ),
 
                 _buildMenuCard(
                   icon: Icons.list_alt,
                   title: "Data Survey",
-                  onTap: () {},
+                  onTap: () {
+                    context.go('/survey');
+                  },
                 ),
 
                 _buildMenuCard(
@@ -193,15 +182,56 @@ class DashboardPage extends StatelessWidget {
                   title: "Laporan",
                   onTap: () {},
                 ),
-
               ],
             ),
           ],
         ),
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor: const Color(0xFF1565C0),
+        unselectedItemColor: Colors.grey,
+
+        onTap: (index) {
+          switch (index) {
+            case 0:
+              context.go('/dashboard');
+              break;
+
+            case 1:
+              context.go('/survey');
+              break;
+
+            case 2:
+              context.go('/profile');
+              break;
+          }
+        },
+
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home),
+            label: "Home",
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.assignment_outlined),
+            activeIcon: Icon(Icons.assignment),
+            label: "Survey",
+          ),
+
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            activeIcon: Icon(Icons.person),
+            label: "Profile",
+          ),
+        ],
+      ),
     );
   }
-
 
   Widget _buildStatisticCard({
     required IconData icon,
@@ -243,7 +273,6 @@ class DashboardPage extends StatelessWidget {
     );
   }
 
-
   Widget _buildMenuCard({
     required IconData icon,
     required String title,
@@ -260,7 +289,6 @@ class DashboardPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             Icon(
               icon,
               size: 45,
