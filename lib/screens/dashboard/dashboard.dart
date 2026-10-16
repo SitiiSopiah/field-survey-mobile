@@ -15,18 +15,8 @@ class DashboardPage extends StatelessWidget {
         foregroundColor: Colors.white,
         title: const Text(
           "Field Survey",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.go('/login');
-            },
-            icon: const Icon(Icons.logout),
-          ),
-        ],
       ),
 
       // ================= BODY =================
@@ -60,10 +50,7 @@ class DashboardPage extends StatelessWidget {
                     children: [
                       Text(
                         "Halo, Surveyor!",
-                        style: TextStyle(
-                          color: Colors.white70,
-                          fontSize: 14,
-                        ),
+                        style: TextStyle(color: Colors.white70, fontSize: 14),
                       ),
                       SizedBox(height: 5),
                       Text(
@@ -84,15 +71,11 @@ class DashboardPage extends StatelessWidget {
 
             const Text(
               "Ringkasan Survey",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 15),
 
-           
             Row(
               children: [
                 Expanded(
@@ -139,15 +122,11 @@ class DashboardPage extends StatelessWidget {
 
             const Text(
               "Menu Utama",
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 15),
 
-          
             GridView.count(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
@@ -201,7 +180,7 @@ class DashboardPage extends StatelessWidget {
               break;
 
             case 1:
-              context.go('/survey');
+              context.go('/surveyDaftar');
               break;
 
             case 2:
@@ -246,28 +225,16 @@ class DashboardPage extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Icon(
-            icon,
-            size: 35,
-            color: const Color(0xFF1565C0),
-          ),
+          Icon(icon, size: 35, color: const Color(0xFF1565C0)),
 
           const SizedBox(height: 10),
 
           Text(
             value,
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
           ),
 
-          Text(
-            title,
-            style: const TextStyle(
-              color: Colors.grey,
-            ),
-          ),
+          Text(title, style: const TextStyle(color: Colors.grey)),
         ],
       ),
     );
@@ -289,20 +256,11 @@ class DashboardPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              icon,
-              size: 45,
-              color: const Color(0xFF1565C0),
-            ),
+            Icon(icon, size: 45, color: const Color(0xFF1565C0)),
 
             const SizedBox(height: 12),
 
-            Text(
-              title,
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
           ],
         ),
       ),
